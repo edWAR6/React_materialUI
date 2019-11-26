@@ -1,26 +1,37 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
+import { Button, TextField } from "@material-ui/core";
+import Bookmarks from "@material-ui/icons/Bookmarks";
+import NavBar from "./Navbar";
+import MediaCard from "./Cards";
+import purple from "@material-ui/core/colors/purple";
+import green from "@material-ui/core/colors/green";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const theme = createMuiTheme({
+  palette: {
+    primary: green,
+    secondary: purple
+  }
+});
+
+class App extends Component {
+  render() {
+    return (
+      <MuiThemeProvider theme={theme}>
+        <NavBar />
+        <Button variant="contained" color="primary">
+          <Bookmarks></Bookmarks>
+          Welcome to Material UI
+        </Button>
+        <Button variant="contained" color="secondary">
+          <Bookmarks></Bookmarks>
+          Secondary color
+        </Button>
+        <TextField placeholder="Enter your name" label="Basic TextField" />
+        <MediaCard />
+      </MuiThemeProvider>
+    );
+  }
 }
 
 export default App;
